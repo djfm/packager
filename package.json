@@ -1,0 +1,25 @@
+{
+  "name": "packager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.0.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "esprima": "^2.2.0",
+    "path-is-absolute": "^1.0.0",
+    "q": "^1.4.1",
+    "underscore": "^1.8.3"
+  }
+}
