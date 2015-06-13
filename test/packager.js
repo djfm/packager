@@ -81,4 +81,30 @@ describe('Packager', function () {
             done();
         }).fail(done);
     });
+
+    it('Should load a file with a custom extension', function (done) {
+
+        var options = packager.getDefaultOptions();
+
+        options.extensions.push({
+            extension: '.custom',
+            compile: function (/* sourceCode */) {
+                return 'module.exports = function return42 () {return 42;}';
+            }
+        });
+
+        packager.package(fixturePath('custom-extension/entry.js'), options).then(function (package) {
+            /* jshint evil:true */
+            eval(package.code);
+            done();
+        }).fail(done);
+    });
+
+    it('Should package jade files', function (done) {
+        packager.package(fixturePath('jade-extension/entry.js')).then(function (package) {
+            /* jshint evil:true */
+            eval(package.code);
+            done();
+        }).fail(done);
+    });
 });
