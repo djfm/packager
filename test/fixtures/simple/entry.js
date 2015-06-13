@@ -2,4 +2,6 @@ function shouldReturn42 () {
     return require('./dep');
 }
 
-module.exports = shouldReturn42();
+if (shouldReturn42() !== 42) {
+    throw new Error('Expected 42.');
+}

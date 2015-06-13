@@ -12,14 +12,18 @@ if (!entryPoint) {
     process.exit(1);
 }
 
-packager.package(entryPoint).then(function (package) {
+var mapFile = output + '.map.json';
+var mapURL = path.basename(mapFile);
+
+packager.package(entryPoint, {
+    sourceMapFile: mapURL
+}).then(function (package) {
     if (package.map) {
-        var mapFile = output + '.map.json';
-        var mapURL = path.basename(mapFile);
-        fs.writeFileSync(mapFile, package.map.toString());
-        package.code += "\n//# sourceMappingURL=" + mapURL;
+        fs.writeFileSync(mapFile, package.map);
+        if (!/^\/\/# sourcemap/.exec(package.code)) {
+            package.code += "\n//# sourceMappingURL=" + mapURL;
+        }
     }
-    
     fs.writeFileSync(output, package.code);
 }).fail(function (err) {
     console.log(err.toString());
