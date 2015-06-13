@@ -20,6 +20,7 @@
     "esprima": "^2.2.0",
     "path-is-absolute": "^1.0.0",
     "q": "^1.4.1",
+    "source-map": "^0.4.2",
     "underscore": "^1.8.3"
   }
 }
