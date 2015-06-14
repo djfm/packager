@@ -78,4 +78,14 @@ describe('JS Resolver', function () {
         .should.become(fixturePath('ext/a.other'))
         .notify(done);
     });
+
+    it('Should find a file required from node_modules using package.json', function (done) {
+        resolver.resolveRequiredFilePath({
+            requiredFrom: fixturePath('from-node_modules-using-package.json/entry.js'),
+            raw: 'jquery'
+        })
+        .get('path')
+        .should.become(fixturePath('from-node_modules-using-package.json/node_modules/jquery/dist/jquery.js'))
+        .notify(done);
+    });
 });
