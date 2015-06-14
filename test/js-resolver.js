@@ -98,4 +98,11 @@ describe('JS Resolver', function () {
         .should.become(fixturePath('from-a-directory/some-module/index.js'))
         .notify(done);
     });
+
+    it('Should resolve a builtin module such as "tty"', function (done) {
+        resolver.resolveRequiredFilePath({
+            requiredFrom: fixturePath('from-a-directory/entry.js'),
+            raw: 'tty'
+        }).then(done.bind(undefined, null)).fail(done);
+    });
 });

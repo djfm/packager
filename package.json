@@ -17,6 +17,7 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
+    "browserify": "^10.2.4",
     "esprima": "^2.2.0",
     "jade": "^1.11.0",
     "path-is-absolute": "^1.0.0",
