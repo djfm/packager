@@ -88,4 +88,14 @@ describe('JS Resolver', function () {
         .should.become(fixturePath('from-node_modules-using-package.json/node_modules/jquery/dist/jquery.js'))
         .notify(done);
     });
+
+    it('Should find a file required from a directory using index.js', function (done) {
+        resolver.resolveRequiredFilePath({
+            requiredFrom: fixturePath('from-a-directory/entry.js'),
+            raw: './some-module'
+        })
+        .get('path')
+        .should.become(fixturePath('from-a-directory/some-module/index.js'))
+        .notify(done);
+    });
 });
