@@ -33,7 +33,7 @@ describe('JS Resolver', function () {
 
     it('Should find a file required from node_modules', function (done) {
         resolver.resolveRequiredFilePath({
-            requiredFrom: fixturePath('from-node-modules/a.js'),
+            requiredFrom: fixturePath('from-node_modules/a.js'),
             raw: 'some-node-module'
         })
         .get('path')
