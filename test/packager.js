@@ -107,4 +107,12 @@ describe('Packager', function () {
             done();
         }).fail(done);
     });
+
+    it('Should respect the "browser" field in package.json (string form)', function (done) {
+        packager.package(fixturePath('package.json-browser-field/basic/entry.js')).then(function (package) {
+            /* jshint evil:true */
+            eval(package.code);
+            done();
+        }).fail(done);
+    });
 });
